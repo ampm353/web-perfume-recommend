@@ -64,4 +64,38 @@ public class PerfumeReviewDao {
 		return pflist;
 	}
 
+
+	public int updatePerfumeReview(Connection conn, int perfumeReviewNo, String perfumeReviewContent) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "update perfume_review set perfume_review_content = ? where perfume_review_no = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, perfumeReviewContent);
+			pstmt.setInt(2, perfumeReviewNo);
+			result = pstmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int deletePerfumeReview(Connection conn, int perfumeReviewNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "delete from perfume_review where perfume_review_no = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, perfumeReviewNo);
+			result = pstmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
 }

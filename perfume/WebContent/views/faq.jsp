@@ -21,14 +21,6 @@
 	display: inline-block;
 	font-size: 20px;
 }
-
-.imgDiv {
-	height: 400px;
-	background-image: url("/headerimg/CS_top_1.jpg");
-	background-size: cover;
-	transition: opacity 0.3s;
-	margin-bottom: 20px;
-}
 /* .wrapper>.1_1_con, .wrapper>.notice_con{
 		display:none;
 	} */
@@ -131,12 +123,12 @@
 	cursor:pointer;
 }
 </style>
-<title>Insert title here</title>
+<title>FAQ</title>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<section style="margin-top:80px;">
-	<div class="imgDiv"></div>
+	<div class="imgDivCs" style="margin-top:-40px;"><img src="/headerimg/tempppp.png" style="width:122%; height:90%;"></div>
 	<div class="wrapper"
 		style="margin: 0 auto; width: 50%; /* border:1px solid gray;  */ min-width: 600px;">
 		<div class="tap" style="height: 60px;">
@@ -172,6 +164,7 @@
 									출고됩니다. <br>모든 제품은 CJ 대한통운을 통해 배송되며 출고 후 마이페이지에서 송장번호를 확인하실
 									수 있습니다. <br>송장번호는 TwentySecond 가입 시 등록해주신 전화번호와 이메일 주소로도 함께 전달드립니다.
 								</p>
+								<button style="border:1px solid #ccc; border-radius:5px; background-color: white; color: #888888; margin-left:42%; margin-top:0;" class="returnFunc">닫기</button>
 							</div>
 						<li>
 							<div class="onclickClass">주문 취소는 어떻게 하나요?</div>
@@ -183,16 +176,17 @@
 									영업일 기준 9:30am~6:30pm 사이에 취소 요청 내역 확인 후 <br>최종적으로 결제 취소를 처리
 									해드립니다. 결제 취소가 완료되면 문자를 통해 안내 받으실 수 있습니다.
 								</p>
-
+								<button style="border:1px solid #ccc; border-radius:5px; background-color: white; color: #888888; margin-left:42%; margin-top:0;" class="returnFunc">닫기</button>
 								<p>
 									02 '출고 작업중' 단계에서는 주문 취소가 제한적으로 이루어집니다. <br>마이페이지&gt;최근 주문
 									내역에서 출고 작업중 단계로 조회 되면, 고객님이 직접 주문 취소를 하실 수는 없습니다. <br>주문
 									취소를 원하실 경우, 1:1 CS, 파펨 고객센터로 다음의 내용과 함께 문의주시면 확인 후 처리해드릴 예정입니다.
 									<br>1. 주문자 성함 2. 결제수단 (카드 결제/휴대폰 결제/가상계좌)
 								</p>
-
+								
 								<p>※ 가상계좌로 주문완료 후 아직 입금 전 단계에서 취소를 원하실 경우에는 별도로 취소 요청을 해주지
 									않으셔도 됩니다.</p>
+									<button style="border:1px solid #ccc; border-radius:5px; background-color: white; color: #888888; margin-left:42%; margin-top:0;" class="returnFunc">닫기</button>
 							</div>
 						<li>
 							<div class="onclickClass">직접 가서 시향할 수 있는 오프라인 매장은
@@ -203,6 +197,7 @@
 									TwentySecond는 자사 제품을 만들어 팔지 않으며, 향수를 유통하는 온라인 사이트입니다.<br>
 									시향을 원하시는 제품이 있다면 해당 상품을 취급하는 매점에 들려 시향을 하시는 걸 권합니다.
 								</p>
+								<button style="border:1px solid #ccc; border-radius:5px; background-color: white; color: #888888; margin-left:42%; margin-top:0;" class="returnFunc">닫기</button>
 							</div>
 						<!-- <li>
 							<div class="onclickClass">향수 보관을 어떻게 하시나요?</div>
@@ -227,6 +222,7 @@
 									- TwentySecond web site 1:1 문의 게시판 <br>- 카카오톡 옐로 ID: @TwentySecond <br>-
 									TwentySecond 고객센터 메일: help@TwentySecond.com
 								</p>
+								<button style="border:1px solid #ccc; border-radius:5px; background-color: white; color: #888888; margin-left:42%; margin-top:0;" class="returnFunc">닫기</button>
 							</div>
 				</ul>
 			</div>

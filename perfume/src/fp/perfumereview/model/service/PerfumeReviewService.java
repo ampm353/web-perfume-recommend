@@ -29,4 +29,30 @@ public class PerfumeReviewService {
 		return prlist;
 	}
 
+	public int updatePerfumeReview(int perfumeReviewNo, String perfumeReviewContent) {
+		Connection conn = JDBCTemplate.getConnection();
+		PerfumeReviewDao dao = new PerfumeReviewDao();
+		int result = dao.updatePerfumeReview(conn, perfumeReviewNo, perfumeReviewContent);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
+	public int deletePerfumeReview(int perfumeReviewNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		PerfumeReviewDao dao = new PerfumeReviewDao();
+		int result = dao.deletePerfumeReview(conn, perfumeReviewNo);
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+
 }

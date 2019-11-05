@@ -50,9 +50,10 @@ public class ChangePaymentStatusAdminServlet extends HttpServlet {
 					type = "out";
 					break;
 				default:
-					type = null;
+					type = "none";
 					break;	
 				}
+				System.out.println("type : "+type);
 				if(type.equals("in")||type.equals("out")) {
 					int i=0;
 					for(PaymentInfo p : list) {
@@ -62,15 +63,13 @@ public class ChangePaymentStatusAdminServlet extends HttpServlet {
 						}
 					}
 					if(i!= list.size()) {
-						request.setAttribute("msg", "처리실패.");
+						request.setAttribute("msg", "처리실패. i size");
 					}else {
 						request.setAttribute("msg", "처리완료.");						
 					}
-				}else {
-					request.setAttribute("msg", "처리실패.");
 				}
 			}else {
-				request.setAttribute("msg", "처리실패.");
+				request.setAttribute("msg", "처리실패. list eq");
 			}
 		}else {
 			request.setAttribute("msg", "오류 발생.");

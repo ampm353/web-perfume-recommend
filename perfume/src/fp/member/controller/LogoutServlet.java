@@ -46,7 +46,7 @@ public class LogoutServlet extends HttpServlet {
 			}
 			session.invalidate();
 		}
-		request.setAttribute("loc", "/index.jsp");
+		request.setAttribute("loc", "/");
 		RequestDispatcher rd = request.getRequestDispatcher("/");
 		rd.forward(request, response);
 	}

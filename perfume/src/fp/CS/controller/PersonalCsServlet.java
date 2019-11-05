@@ -37,21 +37,18 @@ public class PersonalCsServlet extends HttpServlet {
       request.setCharacterEncoding("UTF-8");
       HttpSession session = request.getSession();
       Member m = (Member)session.getAttribute("member");
+      ArrayList<Question> list = new ArrayList<Question>();
       if(m!= null) {
          CSService service = new CSService();
-         ArrayList<Question> list = service.questionList(m.getMemberNickname());
+         list = service.questionList(m.getMemberNickname());
          if(list != null) {
             int size = list.size();
             request.setAttribute("size", size);
          }
-         request.setAttribute("list", list);
-         RequestDispatcher rd = request.getRequestDispatcher("/views/personalCs.jsp");
-         rd.forward(request, response);
-      }else {
-         request.setAttribute("msg", "문의를 남기기 위해 먼저 로그인을 해주세요");
-         RequestDispatcher rd = request.getRequestDispatcher("/views/member/login.jsp");
-         rd.forward(request, response);
       }
+      request.setAttribute("list", list);
+      RequestDispatcher rd = request.getRequestDispatcher("/views/personalCs.jsp");
+      rd.forward(request, response);
    }
 
    /**

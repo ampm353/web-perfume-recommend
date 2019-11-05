@@ -56,7 +56,7 @@ public class ViewPerfumeServlet extends HttpServlet {
       if (p != null) {
          request.setAttribute("perfume", p);
          request.setAttribute("pr", pr2);
-         request.setAttribute("list", prlist);
+         request.setAttribute("prlist", prlist);
          RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/shop/viewPerfume.jsp");
          rd.forward(request, response);
        

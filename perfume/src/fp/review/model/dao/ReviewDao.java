@@ -42,7 +42,7 @@ public class ReviewDao {
 		ArrayList<Review> list = new ArrayList<Review>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query="select * from review order by review_no asc";
+		String query="select * from review order by review_no desc";
 		try {
 			pstmt=conn.prepareStatement(query);
 			rset= pstmt.executeQuery();
@@ -140,7 +140,7 @@ public class ReviewDao {
 	public int insertReviewComment(Connection conn, ReviewComment nc) {
 		PreparedStatement pstmt =null;
 		int result=0;
-		String query = "insert into review_comment(REVIEW_COMMENT_NO,REVIEW_COMMENT_WRITER,REVIEW_COMMENT_CONTENT,REVIEW_REF,REVIEW_COMMENT_DATE) values(seq_review_comment_no.nextval,?,?,?,sysdate)";
+		String query = "insert into review_comment(REVIEW_COMMENT_NO,REVIEW_COMMENT_WRITER,REVIEW_COMMENT_CONTENT,REVIEW_REF,REVIEW_COMMENT_DATE) values(review_comment_no_seq.nextval,?,?,?,sysdate)";
 		try {
 			pstmt=conn.prepareStatement(query);
 			pstmt.setString(1, nc.getReviewCommentWriter());

@@ -604,4 +604,67 @@ public class AdminService {
 		JDBCTemplate.close(conn);
 		return result;
 	}
+
+	public PageData perstaListAdmin(int reqPage) {
+		Connection conn = JDBCTemplate.getConnection();
+		AdminDao dao = new AdminDao();
+		int numPerPage = 10;
+		int totalCount = dao.totalCountPersta(conn);
+		int totalPage=(totalCount%numPerPage==0)?(totalPage = totalCount/numPerPage):(totalPage = totalCount/numPerPage)+1; //총 페이지
+
+		int start = (reqPage-1)*numPerPage+1;
+		int end = reqPage*numPerPage; 
+		ArrayList<Object> list = dao.selectListPersta(conn,start,end);
+/*		for(Notice n : list) {
+			System.out.println(n);
+		}*/
+		String pageNavi = "";
+		int pageNaviSize= 5;
+		int pageNo;
+		if(reqPage<3) {
+			pageNo = 1;
+		}else if(reqPage+2>totalPage){
+			if(totalPage-4 > 0) {
+				pageNo= totalPage-4;
+			}else {
+				pageNo=1;
+			}
+		}else {
+			pageNo = reqPage-2;
+		}
+
+		if(pageNo!=1) {
+			pageNavi += "<a class='btn' style='color:#888888;' href='/perstaAdmin?reqPage="+(pageNo-1)+"'>이전</a>";
+		}
+		int i=1;
+
+		while(!(i++>pageNaviSize || pageNo>totalPage)) {
+			if(reqPage==pageNo) {
+				pageNavi +="<span class ='selectPage' style='color:black;'>"+pageNo+"</span>";
+			}else {
+				pageNavi +="<a class ='btn' style='color:#888888;' href='/perstaAdmin?reqPage="+pageNo+"'>"+pageNo+"</a>";
+			}
+			pageNo++;
+		}
+		if(pageNo<= totalPage) {
+			pageNavi += "<a class='btn' style='color:#888888;' href='/perstaAdmin?reqPage="+(pageNo)+"'>다음</a>";
+		}
+		PageData pd = new PageData(list, pageNavi);
+		
+		JDBCTemplate.close(conn);
+		return pd;
+	}
+
+	public int delPerstaAdmin(String reviewNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		AdminDao dao = new AdminDao();
+		int result = dao.delPerstaAdmin(conn, reviewNo);
+		if(result != 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
 }

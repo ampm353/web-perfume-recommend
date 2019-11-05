@@ -60,7 +60,7 @@ public class UpdateStockServlet extends HttpServlet {
 					rd.forward(request, response);
 				}
 			}else {
-				rd = request.getRequestDispatcher("/index.jsp");
+				rd = request.getRequestDispatcher("/");
 				rd.forward(request, response);
 			}
 		}else {

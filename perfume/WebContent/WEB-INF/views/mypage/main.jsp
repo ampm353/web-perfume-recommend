@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>마이페이지</title>
 </head>
 <body>
 <style>
@@ -95,7 +95,6 @@
 						<li class="mt36"> 구매 내역이 없습니다.</li>
 					</ul>
 					<div class="text-right mb64">
-						<button class="btn btn-outline-dark btn-sm" onclick="location.href='/goChoice'">나에게 맞는 향수 추천 받기</button>
 						<button class="btn btn-outline-dark btn-sm" onclick="location.href='/perfumeList'">첫 구매하러가기</button>
 					</div>
 					</c:if>
@@ -141,7 +140,7 @@
 							<div class="div-img">
 								<a href="/viewPerfume?perfumeNo=${rd.recommendPerfumeNo }"><img class="recommendImg" src='/upload/photo/${rd.recommendPerfumePhotopath }' width='120px' height='120px'></a>
 							</div>
-							<p style="width:100%;text-align: center;">${rd.recommendPerfumeName }</p>
+							<p style="width:100%;text-align: center;">${rd.recommendPerfumeName }<br>${rd.recommendPerfumeVolume }ml</p>
 						</div>
 						</c:if>
 						</c:forEach>

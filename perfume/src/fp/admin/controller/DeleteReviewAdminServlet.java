@@ -37,7 +37,7 @@ public class DeleteReviewAdminServlet extends HttpServlet {
 		RequestDispatcher rd;
 		if(m != null) {
 			if(m.getMemberId().equals("admin@")) {
-				int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+				int reviewNo = Integer.parseInt(request.getParameter("perfumeReviewNo"));
 				AdminService service = new AdminService();
 				int result = service.deleteReviewAdmin(reviewNo);
 				if(result ==0) {
@@ -45,11 +45,9 @@ public class DeleteReviewAdminServlet extends HttpServlet {
 				}
 				rd= request.getRequestDispatcher("/reviewAdmin");
 			}else {
-				request.setAttribute("msg", "신성모독이다");
-				rd = request.getRequestDispatcher("/index.jsp");
+				rd = request.getRequestDispatcher("/");
 			}
 		}else {
-			request.setAttribute("msg", "신분을 밝히세요");
 			rd = request.getRequestDispatcher("/views/member/login.jsp");
 		}
 		rd.forward(request, response);

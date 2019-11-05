@@ -23,13 +23,6 @@
 		display: inline-block;
 		font-size: 20px;
 	}
-	.imgDiv{
-		height: 400px;
-		background-image: url("/headerimg/CS_top_1.jpg");
-		background-size: cover;
-		transition: opacity 0.3s;
-		margin-bottom: 20px;
-	}
 	/* .wrapper>.1_1_con, .wrapper>.notice_con{
 		display:none;
 	} */
@@ -112,12 +105,12 @@
 		font-size:15px;
 	}
 </style>
-<title>Insert title here</title>
+<title>News</title>
 </head>
 <body>
 	<%@ include file= "/WEB-INF/views/common/header.jsp" %>
-	<section style="margin-top:80px;">
-		<div class="imgDiv"></div>
+	<section style="margin-top:62px;">
+		<div class="imgDivCs" style="margin-top:-40px;"> <img src="/headerimg/tempppp.png" style="width:122%; height:90%;"></div>
 		<div class="wrapper" style="margin:0 auto; width:50%; /* border:1px solid gray;  */min-width: 600px;">
 			<div class="tap" style="height:60px;">
 				<div class="FAQ" onclick="location.href='/views/faq.jsp'" style="cursor:pointer;" >FAQ</div><!-- <span></span> --><div class="cs" onclick="location.href='/personalCs?memberId=${sessionScope.member.memberId}'" style="cursor:pointer;">1:1문의</div><!-- <span></span> --><div class="notice">NOTICE</div>

@@ -27,7 +27,7 @@
         height: 500px;
         float: right;
         box-sizing: border-box;
-        padding-top: 110px;
+        padding-top: 70px;
         text-align: left;
     }
     .btn1 {
@@ -89,21 +89,36 @@
        border: none;
        background-color:#F5F5F5;
        width: 100%;
-         height: 30px;
-         padding-left:10px;
-         color: #777777;
-         font-weight: 300;
+       height: 30px;
+       padding-left:10px;
+       color: #777777;
+       font-weight: 300;
     }
     .textarea1{
        border: none;
        background-color:#F5F5F5;
        font-weight: 300;
        width: 100%;
-         height: 70px;
-         padding-left:10px;
-         margin-top: 5px;
-         color: #777777;
+       height: 53px;
+       padding-left:10px;
+       color: #777777;
     }
+    .commentList{
+         width: 100%;
+         clear: both;
+         border-top: 1px solid black;
+         padding: 10px;
+         overflow: hidden;
+      }
+      .commentList>li{
+         float: left;
+         color: black;
+         padding-left: 10px;
+         padding-right: 10px;
+      }
+      .a3{
+         color:#BDBDBD;
+      }
 </style>   
 </head>
 <body>
@@ -118,7 +133,8 @@
                  <form action="/insertBasket?perfumeNo=${perfume.perfumeNo }" method="post">
                        <input type="hidden" name="perfumePrice" value="${perfume.perfumePrice }">
                        <span style="color:black;">${perfume.perfumeBrand }</span><br>
-                       <span style="color:black; font-size:25px;">${perfume.perfumeName }</span><br><br>
+                       <span style="color:black; font-size:25px;">${perfume.perfumeName }</span><br>
+                     <span style="color:black; font-size:12px;display:block;margin-top:10px;">${perfume.perfumeVolume }ml</span><br>
                      <span style="color:black;">${perfume.perfumePrice }원</span><br><br>
                      <select id="amount" name="perfumeAmount">
                         <option value="0" hidden>수량 선택</option>
@@ -160,53 +176,76 @@
           <div id="tab2" class="hidden" style="clear:both; height:1000px;">
              <div class="table-wrapper" style="margin:0 auto; width:100%;">          
                <div style="width:100%; margin:0 auto; text-align:center;">
+
+
+                  
                    
-                   <c:forEach items="${list }" var="prv" varStatus="i">
-                      <table style="width:80%; margin:0 auto; border-top:1px solid black;">
-                        <tr>
-                           <td rowspan="2" style="width:20%; color:black; font-size:15px;" ><img src="https://img.icons8.com/material/24/000000/writer-male.png">　${prv.memberNickname }</td>
-                           <td style="width:70%; color:black; font-size:15px; padding-top:10px; padding-bottom:10px;">${prv.perfumeReviewTitle }</td>
-                           <td rowspan="2" style="width:10%; color:gray; font-size: 10px; width: 70px; font-weight:300; text-align:right;">${prv.perfumeReviewDate }</td>
-                        </tr>
-                        <tr style="padding-bottom:10px;">
-                            <td style="width:70%; color:black; font-size:13px; font-weight:300; padding-bottom:10px;">${prv.perfumeReviewContent }</td>
-                         </tr>
-                      </table>
-                  </c:forEach>
-                   
-                  <c:if test="${empty list }">
+                  <c:if test="${empty prlist }">
                      <div style="margin:0 auto; text-align:center;">
                         <span style="color:black; font-weight:300;">아직 작성된 리뷰가 없습니다.<br>첫번째 리뷰를 남겨주세요!<br><br></span>
                         <c:if test="${empty sessionScope.member }">
-                     <span style="color:gray; font-weight:300;">로그인 후 작성 가능합니다.</span>
+                           <span style="color:gray; font-weight:300;">로그인 후 작성 가능합니다.</span>
+                        </c:if>
+                     </div>
                   </c:if>
+                   
+                   
+                   <c:if test="${!empty prlist }">
+                     <div style="margin:0 auto; text-align:center;">
+                        <c:if test="${empty sessionScope.member }">
+                         <div style="width:170px; margin:0 auto; padding-top:15px; padding-bottom:40px;">
+                           <span style="color:gray; font-weight:300;">로그인 후 작성 가능합니다.</span>
+                        </div>                           
+                       </c:if>
                      </div>
-                  </c:if>   
-               
-                  <c:if test="${!empty sessionScope.member }">
-                     <div style="width:170px; margin:0 auto; padding-top:15px;">
-                        <button class="btn1" id="non2">리뷰 쓰기</button>
-                     </div>
-                     <div style="padding-top: 30px; margin:0 auto; text-align:center; width:80%;" id="non1">
-                        <form action="/insertPerfumeReview" method="post" >
-                           <input style="width:100%;" type="hidden" name="perfumeNo" value="${perfume.perfumeNo }">
-                           <input style="width:100%;" type="hidden" name="memberNo" value="${sessionScope.member.memberNo }">
-                           <input style="width:100%;" type="hidden" name="memberNickname" value="${sessionScope.member.memberNickname }">
-                           <div style ="width:100%; height:200px;">
-                              <div style="width:100%;">
-                                 <input class="input1" type="text" name="perfumeReviewTitle" placeholder="제목">
-                              </div>
-                              <div style="width:100%;">
-                                 <textarea class="textarea1" name="perfumeReviewContent" placeholder="내용"></textarea>
-                              </div>
-                              <div style="width:170px; margin:0 auto; padding-top:15px;">
-                                 <button class="btn1">리뷰 등록하기</button>
-                              </div>                           
-                           </div>                           
-                        </form>                     
-                     </div>
-                     
-                  </c:if>         
+                  </c:if>
+
+         
+
+   
+   
+   <c:if test="${not empty sessionScope.member}">    <%-- 댓글 작성 시작 --%>
+         <div class="comment-write" style="text-align:center; width:80%; margin:0 auto;">
+            <form action="/insertPerfumeReview" method="post">
+               <input type="hidden" name="memberNo" value="${sessionScope.member.memberNo }">
+               <input type="hidden" name="memberNickname" value="${sessionScope.member.memberNickname }">
+               <input type="hidden" name="perfumeNo" value="${perfume.perfumeNo }">
+               <table class="table">
+                  <tr style="border:none;">
+                     <td width="80%" style="padding-left:0px;">
+                        <input rows="1" class="textarea1" name="perfumeReviewContent"></input>
+                     </td>
+                     <td width="20%" style="padding-left:0px; padding-right:0px;">
+                        <button type="submit" class="btn1" style="width:100%;">등록</button>
+                     </td>
+                  </tr>
+               </table>
+            </form>
+         </div>
+      </c:if> <%-- 댓글 작성 끝 --%>
+      
+      <div class="comment-wrapper" style="text-align:center; width:80%; margin: 0 auto; ">
+         <c:forEach items="${prlist }" var="pr">
+            <ul class="commentList">               
+                  <li style="width: 30%; font-weight: 500; text-align: left; font-size:15px;"><span>${pr.memberNickname }</span></li>
+                  <li style="width: 70%; text-align: right; font-size:10px;"><span>${pr.perfumeReviewDate }</span></li>
+                  
+                  <li style="width: 80%; text-align: left; font-size:15px;">
+                     <span>${pr.perfumeReviewContent }</span>
+                     <input type="text" name="perfumeReviewContent" class="textarea1" value="${pr.perfumeReviewContent }" style="display:none; margin-top:5px;">
+                  </li>
+                     <c:if test="${not empty sessionScope.member}">
+                        <li style="width: 20%; text-align: right;">
+                           <c:if test="${sessionScope.member.memberNo == pr.memberNo}">
+                              <a href="javascript:void(0)" class="a3" onclick="modifyComment(this, '${pr.perfumeReviewNo }');">수정</a>
+                              <a href="javascript:void(0)" class="a3" onclick="deleteComment(this, '${pr.perfumeReviewNo }');">  삭제</a>
+                           </c:if>
+                        </li>
+                     </c:if>                  
+               </ul>      
+         </c:forEach>
+      
+                         
                </div><br>
                      
                
@@ -262,6 +301,39 @@
             location.href="/paymentDirect?perfumeNo="+atr+"&amount="+amount;
         }
       
+   </script>
+   
+   <script>
+
+      function modifyComment(obj, reviewNo) {
+         $(obj).prev().hide();
+         $(obj).html('수정완료');
+         $(obj).attr('onclick', 'modifyComplete(this, "' + reviewNo + '")');
+         $(obj).next().html('  취소');
+         $(obj).next().attr('onclick', 'modifyCancle(this, "' + reviewNo + '")');
+         $(obj).parent().parent().find('input').show();
+         $(obj).parent().parent().find('input').prev().hide();
+      }
+      function modifyCancle(obj, reviewNo) {
+         $(obj).prev().prev().show();
+         $(obj).prev().html('수정');
+         $(obj).prev().attr('onclick', 'modifyComment(this, "' + reviewNo + '")');
+         $(obj).html('  삭제');
+         $(obj).next().attr('onclick', 'deleteComment(this, "' + reviewNo + '")');
+         $(obj).parent().parent().find('input').hide();
+         $(obj).parent().parent().find('input').prev().show();
+      }
+      function modifyComplete(obj, reviewNo) {
+         var form = $("<form action='perfumeReviewUpdate' method='post'></form>");
+         form.append($("<input type='text' name='perfumeReviewNo' value='" + reviewNo + "'>"));
+         form.append($("<input type='hidden' name='perfumeNo' value='" + ${perfume.perfumeNo} + "'>"));
+         form.append($(obj).parent().parent().find('input'));
+         $('body').append(form);
+         form.submit();
+      }
+      function deleteComment(obj, reviewNo) {
+         location.href= "/perfumeReviewDelete?perfumeReviewNo=" + reviewNo +"&perfumeNo=" + ${perfume.perfumeNo};
+      }
    </script>
 </body>
 </html>

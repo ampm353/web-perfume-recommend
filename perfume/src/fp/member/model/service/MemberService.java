@@ -66,4 +66,18 @@ public class MemberService {
 		return result;
 	}
 
+	public int updateData(int memberNo, String phone, String birth, String gender) {
+		Connection conn = JDBCTemplate.getConnection();
+		MemberDao dao = new MemberDao();
+		int result = dao.updateData(conn, memberNo, phone, birth,gender);
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		} else {
+			JDBCTemplate.rollback(conn);
+		}
+		JDBCTemplate.close(conn);
+		return result;
+	}
+	
+
 }

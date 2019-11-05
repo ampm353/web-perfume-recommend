@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Twenty Second</title>
 </head>
 <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
 <link rel = "stylesheet" href="/css/bootstrap.css">
@@ -16,11 +16,11 @@
 <!--background-repeat: no-repeat;-->
 <body>
 	<%@ include file = "/WEB-INF/views/common/header.jsp" %>
-	<div class = "backgroundPhoto" style = "cursor: pointer;">
+	<div class = "backgroundPhoto" style = "cursor: pointer; margin-top: 62px;">
 		<div class = "titleWrap">
 			<div class = "title">
 				<p class = "font48">Recommendation Algorithm</p>
-				<p class = "font32">by 2nd 20th</p>
+				<p class = "font32">by Twenty Second</p>
 			</div>
 		</div>
 	</div>

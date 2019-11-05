@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<script type="text/javascript" src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<title>마이페이지</title>
 </head>
 <body>
 <style>
@@ -384,6 +385,7 @@ $(document).ready(function(){
 			type : "get",
 			success : function(data){
 				var tbody = $("#shipAddr_list").children('tbody');
+				tbody.html("");
 				if(data.length>0){
 				tbody.html("<tr><th></th><th>받는사람</th><th>연락처</th><th>배송지</th><th>정보삭제</th></tr>");
 					for(var index in data){

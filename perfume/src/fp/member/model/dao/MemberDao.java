@@ -164,4 +164,24 @@ public class MemberDao {
 		}
 		return result;
 	}
+
+	public int updateData(Connection conn, int memberNo, String phone, String birth, String gender) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "update member set member_phone = ?, member_birth = ?, member_gender = ? where member_no = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, phone);
+			pstmt.setString(2, birth);
+			pstmt.setString(3, gender);
+			pstmt.setInt(4, memberNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 }

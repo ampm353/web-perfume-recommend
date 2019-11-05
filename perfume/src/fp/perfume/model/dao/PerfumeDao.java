@@ -565,89 +565,108 @@ public class PerfumeDao {
 	}
 	
 	public ArrayList<String> viewBrand(Connection conn, String msg) {
-		ArrayList<String> list = new ArrayList<String>();
-		String query = "select distinct perfume_brand from perfume where perfume_brand like ?";
-		PreparedStatement pstat = null;
-		ResultSet rset = null;
-		try {
-			pstat = conn.prepareStatement(query);
-			pstat.setString(1, msg+"%");
-			rset = pstat.executeQuery();
-			while(rset.next()) {
-				list.add(rset.getString(1));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
+	      ArrayList<String> list = new ArrayList<String>();
+	      String query = "select distinct perfume_brand from perfume where perfume_brand like ?";
+	      PreparedStatement pstat = null;
+	      ResultSet rset = null;
+	      try {
+	         pstat = conn.prepareStatement(query);
+	         pstat.setString(1, msg+"%");
+	         rset = pstat.executeQuery();
+	         while(rset.next()) {
+	            list.add(rset.getString(1));
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	      return list;
+	   }
 
 
-	public ArrayList<Perfume> searchAi(Connection conn, String[] q1, String[] q2, String[] q3, String q4,
-		String brand, int q5, Boolean q6) {
-		ArrayList<Perfume> list = new ArrayList<Perfume>();
-		//쿼리문을 반복문에 넣자.
-		StringBuilder query = new StringBuilder();
-		//select * from perfume where perfume_density = 2 and perfume_brand = 'VINCE CAMUTO' and perfume_price < 100000 and  perfume_top like '%베르가못%' and perfume_top like '%럼주%' and perfume_top like '%바질%' and perfume_middle like '%라벤더%' and perfume_middle like '%블랙페퍼%' and perfume_middle like '%클라리세이지%' and perfume_base like '%베티버%' and perfume_base like '%페츌리%' and perfume_base like '%우드%' order by perfume_rec_count DESC;
-		query.append("select * from perfume where perfume_density = ? and perfume_brand = ? and perfume_price < ?");
-		//TopNote 쿼리 작성
-		for(int i = 0; i < q1.length; i++) {
-			query.append(" and perfume_top like ?");
-		}
-		//MiddleNote 쿼리 작성
-		for(int i = 0; i < q2.length; i++) {
-			query.append(" and perfume_middle like ?");
-		}
-		//BaseNote 쿼리 작성
-		for(int i = 0; i < q3.length; i++) {
-			query.append(" and perfume_base like ?");
-		}
-		//추천수 정렬
-		if(q6) {
-			query.append(" order by perfume_rec_count DESC");
-		}else {
-			query.append(" order by perfume_rec_count ASC");
-		}
-		PreparedStatement pstat = null;
-		ResultSet rset = null;
-		try {
-			pstat = conn.prepareStatement(query.toString());
-			pstat.setString(1, q4);
-			pstat.setString(2, brand);
-			pstat.setInt(3, q5);
-			for(int i = 0; i < q1.length; i++) {
-				pstat.setString(4+i, "%"+q1[i]+"%");
-			}
-			for(int i = 0; i < q2.length; i++) {
-				pstat.setString(4+q1.length+i, "%"+q2[i]+"%");
-			}
-			for(int i = 0 ; i < q3.length; i++) {
-				pstat.setString(4+q1.length+q2.length+i, "%"+q3[i]+"%");
-			}
-			rset = pstat.executeQuery();
-			while(rset.next()) {
-				Perfume p = new Perfume();
-				p.setPerfumeNo(rset.getInt(1));
-				p.setPerfumeName(rset.getString(2));
-				p.setPerfumeBrand(brand);
-				p.setPerfumeVolume(rset.getInt(4));
-				p.setPerfumeDensity(q4);
-				p.setPerfumeTop(rset.getString(6));
-				p.setPerfumeMiddle(rset.getString(7));
-				p.setPerfumeBase(rset.getString(8));
-				p.setPerfumeRecCount(rset.getInt(9));
-				p.setPerfumeGender(rset.getString(10));
-				p.setPerfumePrice(rset.getInt(11));
-				p.setPerfumePhotoname(rset.getString(12));
-				p.setPerfumePhotopath(rset.getString(13));
-				p.setPerfumeDetail(rset.getString(14));
-				list.add(p);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
+	   public ArrayList<Perfume> searchAi(Connection conn, String[] q1, String[] q2, String[] q3, String q4,
+	         String brand, int q5, Boolean q6) {
+	      ArrayList<Perfume> list = new ArrayList<Perfume>();
+	      //쿼리문을 반복문에 넣자.
+	      StringBuilder query = new StringBuilder();
+	      //select * from perfume where perfume_density = 2 and perfume_brand = 'VINCE CAMUTO' and perfume_price < 100000 and  perfume_top like '%베르가못%' and perfume_top like '%럼주%' and perfume_top like '%바질%' and perfume_middle like '%라벤더%' and perfume_middle like '%블랙페퍼%' and perfume_middle like '%클라리세이지%' and perfume_base like '%베티버%' and perfume_base like '%페츌리%' and perfume_base like '%우드%' order by perfume_rec_count DESC;
+	      query.append("select * from perfume where perfume_price < ?");
+	      if(brand != null && !brand.equals("")) {
+	          query.append(" and perfume_brand = ?");
+	      }
+	      //TopNote 쿼리 작성
+	      if(q1!=null)
+	      for(int i = 0; i < q1.length; i++) {
+	         query.append(" and perfume_top like ?");
+	      }
+	      //MiddleNote 쿼리 작성
+	      if(q2!=null)
+	      for(int i = 0; i < q2.length; i++) {
+	         query.append(" and perfume_middle like ?");
+	      }
+	      //BaseNote 쿼리 작성
+	      if(q3!=null)
+	      for(int i = 0; i < q3.length; i++) {
+	         query.append(" and perfume_base like ?");
+	      }
+	      //추천수 정렬
+	      if(q6) {
+	         query.append(" order by perfume_rec_count DESC");
+	      }else {
+	         query.append(" order by perfume_rec_count ASC");
+	      }
+	      PreparedStatement pstat = null;
+	      ResultSet rset = null;
+	      try {
+	         pstat = conn.prepareStatement(query.toString());
+	         pstat.setInt(1, q5);
+	         int j = 2;
+	         if(brand != null && !brand.equals("")) {
+	            pstat.setString(j, brand);
+	            j++;
+	         }
+	         if(q1!=null) {
+	            for(int i = 0; i < q1.length; i++) {
+	               pstat.setString(j+i, "%"+q1[i]+"%");
+	            }
+	            j+=q1.length;
+	         }
+	         if(q2!=null) {
+	            for(int i = 0; i < q2.length; i++) {
+	               pstat.setString(j+i, "%"+q2[i]+"%");
+	            }
+	            j+=q2.length;
+	         }
+	         if(q3!=null)
+	         for(int i = 0 ; i < q3.length; i++) {
+	            pstat.setString(j+i, "%"+q3[i]+"%");
+	         }
+	         rset = pstat.executeQuery();
+	         for(int i = 0; i < 8; i++) {
+	            if(!rset.next()) {
+	               break;
+	            }
+	            Perfume p = new Perfume();
+	            p.setPerfumeNo(rset.getInt(1));
+	            p.setPerfumeName(rset.getString(2));
+	            p.setPerfumeBrand(brand);
+	            p.setPerfumeVolume(rset.getInt(4));
+	            p.setPerfumeDensity(q4);
+	            p.setPerfumeTop(rset.getString(6));
+	            p.setPerfumeMiddle(rset.getString(7));
+	            p.setPerfumeBase(rset.getString(8));
+	            p.setPerfumeRecCount(rset.getInt(9));
+	            p.setPerfumeGender(rset.getString(10));
+	            p.setPerfumePrice(rset.getInt(11));
+	            p.setPerfumePhotoname(rset.getString(12));
+	            p.setPerfumePhotopath(rset.getString(13));
+	            p.setPerfumeDetail(rset.getString(14));
+	            list.add(p);
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	      return list;
+	   }
 
 	public int totalCountSearch(Connection conn, String selected, String inputvalue) {
 		PreparedStatement pstmt = null;
@@ -941,7 +960,7 @@ public class PerfumeDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		gender = "'" + gender + "'";
-		String query = "select * from (select rownum as rnum, n.* from(select * from perfume order by perfume_rec_count desc) n) where rnum between 1 and 4 and perfume_gender = " + gender;
+		String query = "select * from (select rownum as rnum, n.* from(select * from perfume where perfume_gender =" + gender +" order by perfume_rec_count desc) n) where rnum between 1 and 4";
 		try {
 			pstmt = conn.prepareStatement(query);
 			rset = pstmt.executeQuery();

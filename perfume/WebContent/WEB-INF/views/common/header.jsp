@@ -15,6 +15,16 @@
 <script type="text/javascript" src="/js/bootstrap.js"></script>
 
 <style>
+.imgDivCs {
+	matgin:0 auto;
+	margin-left: 10%;
+	margin-right: 10%;
+	/* background-image: url("/headerimg/tempppp.png"); */
+	background-size: cover;
+	-webkit-filter: grayscale(85%);
+	transition: opacity 0.3s;
+	margin-bottom: 20px;
+}
 section {
    margin-top: 0;
 }
@@ -121,8 +131,7 @@ section{
 <script>
 $(function(){
 	if(${not empty hrefKakaoLogout}){
-		var newWin = window.open("https://accounts.kakao.com/logout?continue=https://accounts.kakao.com/weblogin/account", "카카오 로그아웃","width=1,height=1,toolbar=no,menubar=no,scrollbars=no,resizable=no");
-		newWin.close();
+		
 	}
 	if(${not empty msg}){
 		alert("${msg}");

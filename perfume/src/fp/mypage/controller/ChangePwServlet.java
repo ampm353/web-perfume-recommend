@@ -43,9 +43,11 @@ public class ChangePwServlet extends HttpServlet {
 				MypageService service = new MypageService();
 				int result = service.changePw(m,changePw);
 				if(result == 0) {
+					request.setAttribute("msg", "비밀번호이 실패했습니다. 문제가 반복될 시 1:1 문의로 문의주세요.");
 					rd = request.getRequestDispatcher("/");
 					System.out.println("뭔가 이상함. ChangePwServlet 확인좀요1");
 				}
+				request.setAttribute("msg", "비밀번호가 변경되었습니다.");
 				rd = request.getRequestDispatcher("/views/member/login.jsp");
 			}else {
 				System.out.println("뭔가 이상함. ChangePwServlet 확인좀요2");

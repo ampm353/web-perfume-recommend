@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>email Join</title>
+<title>이메일 회원가입</title>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <style>
 	.btn1 {

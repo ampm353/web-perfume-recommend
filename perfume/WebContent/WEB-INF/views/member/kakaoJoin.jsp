@@ -7,10 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>카카오 회원가입</title>
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+</script>
 <style>
 	.btn1 {
 	    width:365px;
@@ -61,6 +63,43 @@
     }
 
 </style>
+</head>
+<body>
+	<%@include file="/WEB-INF/views/common/header.jsp"%>
+	<section style="padding-top:60px;">
+		<div class="table-wrapper" style="margin:0 auto; width:750px; height:900px;">
+			<form id="kakaojoinform" action="/kakaoJoin" method="post" id="control">
+				<input type="hidden" name="memberId" value="<%=id %>">
+				
+				<div class="div2">
+					<span class="span1">닉네임</span>　<span id="chkNickName"></span>
+					<input class="input1" type="text" name="memberNickName" id="nickName"><br>
+				</div>
+				<input type="hidden" name="memberPw" value="<%=id %>">
+				<div class="div1">
+					<span class="span1">휴대폰 번호</span>　<span id="chkPhone"></span>
+					<input class="input1" type="tel" name="memberPhone" id="phone" placeholder="ex) 010-0000-0000"><br>								
+				</div>
+				
+				<div class="div2">
+					<span class="span1">생년월일</span>　<span id="chkBirth"></span>
+					<input class="input1" type="text" name="memberBirth" id="birth" placeholder="ex) 20191024"><br>
+				</div>
+				
+				<div class="div1">
+					<span class="span1" style="width:100%;">성별 (선택)</span>
+					<input type="radio" class="radio1" style="display:none;" name="memberGender" id="male" value="male"><label for="male" class="btn1 clickbtn" style="width:177px; margin-right:10px;">남자</label>
+					<input type="radio" class="radio1" style="float:right; display:none;" name="memberGender" id="female" value="female"><label for="female" class="btn1 clickbtn" style="width:177px;">여자</label>
+				</div>
+
+				<button type="submit" class="admin btn1" style="width:100%">SIGN UP</button>
+				
+				
+			</form>
+			
+		</div>
+	</section>
+	<%@include file="/WEB-INF/views/common/footer.jsp" %>
 <script>
 	var arr = [false,false,false];
 	var mailChkNum = "";
@@ -123,72 +162,67 @@
 				$("#chkPhone").css('color','red');//id가 chkPhone인 span태그에 쓰여진 문자의 색깔을 빨간색으로 지정
 			}
 		});
-	});
-	
-	function check() {
-		for(var i=0; i<arr.length; i++){
-			if(arr[i]==false){
-				return false;
+		
+		function clear(){
+			message.innerHTML="";
+			var input = document.getElementsByTagName("input");
+			for(var i=0; i<input.length; i++){
+				input[i].style.background="white";
 			}
-			alert(arr[i]);	
 		}
 		
-	}
-	
-	function clear(){
-		message.innerHTML="";
-		var input = document.getElementsByTagName("input");
-		for(var i=0; i<input.length; i++){
-			input[i].style.background="white";
+		
+		var chkUnload = true;
+		/* function check() {
+			var length = arr.length;
+			var chk =0;
+			for(var i=0; i<arr.length; i++){
+				if(arr[i]==false){
+					return false;
+				}else{
+					chk++;
+				}	
+			}
+			if(chk==length){
+				chkUnload=false;				
+			}
+			return false;
 		}
-	}
-	
-</script>
-</head>
-<body>
-	<%@include file="/WEB-INF/views/common/header.jsp"%>
-	<section style="padding-top:60px;">
-		<div class="table-wrapper" style="margin:0 auto; width:750px; height:900px;">
-			<form action="/kakaoJoin" method="post" id="control">
-				<input type="hidden" name="memberId" value="<%=id %>">
-				
-				<div class="div2">
-					<span class="span1">닉네임</span>　<span id="chkNickName"></span>
-					<input class="input1" type="text" name="memberNickName" id="nickName"><br>
-				</div>
-				<input type="hidden" name="memberPw" value="<%=id %>">
-				<div class="div1">
-					<span class="span1">휴대폰 번호</span>　<span id="chkPhone"></span>
-					<input class="input1" type="tel" name="memberPhone" id="phone" placeholder="ex) 010-0000-0000"><br>								
-				</div>
-				
-				<div class="div2">
-					<span class="span1">생년월일</span>　<span id="chkBirth"></span>
-					<input class="input1" type="text" name="memberBirth" id="birth" placeholder="ex) 20191024"><br>
-				</div>
-				
-				<div class="div1">
-					<span class="span1" style="width:100%;">성별 (선택)</span>
-					<input type="radio" class="radio1" style="display:none;" name="memberGender" id="male" value="male"><label for="male" class="btn1 clickbtn" style="width:177px; margin-right:10px;">남자</label>
-					<input type="radio" class="radio1" style="float:right; display:none;" name="memberGender" id="female" value="female"><label for="female" class="btn1 clickbtn" style="width:177px;">여자</label>
-				</div>
-
-				<button type="submit" class="admin btn1" onclick="return check();" style="width:100%">SIGN UP</button>
-				
-				
-				
-			</form>
-			
-		</div>
-	</section>
-	<%@include file="/WEB-INF/views/common/footer.jsp" %>
-	<script>
-		$(document).ready(function(){
-			$(".clickbtn").click(function() {
-				$(".clickbtn").css("color", "black");
-				$(this).css("background", "black").css("color", "white");
-			});
+		
+		 */
+	    $(window).on("beforeunload", function(){
+	        if(chkUnload){
+	        	var confirmResult = confirm("회원 가입을 취소하시겠습니까?");
+		    	if(confirmResult ){
+		    		var newWin = window.open("https://accounts.kakao.com/logout?continue=https://accounts.kakao.com/weblogin/account", "카카오 로그아웃","width=1,height=1,toolbar=no,menubar=no,scrollbars=no,resizable=no");
+		    		newWin.close();
+		        }else{
+		        	
+		        }
+	        }
+	    });
+	    $("#kakaojoinform").submit(function(){
+	    	/* function check() { */
+				var length = arr.length;
+				var chk =0;
+				for(var i=0; i<arr.length; i++){
+					if(arr[i]==false){
+						alert("가입 폼을 완성해주세요!");
+						return false;
+					}else{
+						chk++;
+					}	
+				}
+				if(chk==length){
+					chkUnload=false;				
+				}
+			/* } */
+	    })
+		$(".clickbtn").click(function() {
+			$(".clickbtn").css("color", "black");
+			$(this).css("background", "black").css("color", "white");
 		});
-	</script>
+	});
+</script>
 </body>
 </html>

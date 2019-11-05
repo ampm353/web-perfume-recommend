@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Admin Page</title>
 <style>
 
 </style>
@@ -69,6 +69,12 @@
 							<td class="payment_ship_data">${list.paymentShipName}<br>${list.paymentShipPhone}<br>${list.paymentShipAddr}</td>
 							<td><br><button type="button" class="checkReqTradeAdmin" class="btn btn-outline-dark btn-sm status_btn">확인</button></td>
 							<td class="payment_status">${list.paymentStatus}<br>
+							<%--
+							디버깅 
+							<button type="button" class="btn btn-outline-dark btn-sm status_btn" onclick="changeStatus(this);">테스트</button>
+							<input type="hidden" value="결제취소"> 
+							<input type="hidden" value="${list.paymentNo}">
+							 --%>
 								<c:choose> 
 									<c:when test='${list.paymentStatus eq "배송완료" || list.paymentStatus eq "배송중"}'>
 										
@@ -81,7 +87,7 @@
 	 									<button type="button" class="btn btn-outline-dark btn-sm status_btn" onclick="changeStatus(this);">배송</button>
 	 									<input type="hidden" value="배송중"> 
 									</c:when>
-									<c:when test='${list.paymentStatus eq "결제취소"}'>
+									<c:when test='${list.paymentStatus eq "결제취소" }'>
 										<button type="button" class="btn btn-outline-dark btn-sm status_btn" onclick="changeStatus(this);">취소확인</button>
 										<input type="hidden" value="거래취소"> 
 									</c:when>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>마이페이지</title>
 </head>
 <body>
 <style>
@@ -71,7 +71,7 @@
 											<div class="div-img">
 												<a href="/viewPerfume?perfumeNo=${rd.recommendPerfumeNo }"><img class="recommendImg" src='/upload/photo/${rd.recommendPerfumePhotopath }' width='120px' height='120px'></a>
 											</div>
-											<p style="width:100%;text-align: center;">${rd.recommendPerfumeName }</p>
+											<p style="width:100%;text-align: center;">${rd.recommendPerfumeName }<br>${rd.recommendPerfumeVolume }ml</p>
 										</div>
 									</c:if>
 								</c:forEach>

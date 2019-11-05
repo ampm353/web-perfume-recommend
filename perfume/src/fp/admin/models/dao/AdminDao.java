@@ -919,4 +919,78 @@ public class AdminDao {
 		}
 		return result;
 	}
+
+	public int totalCountPersta(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result=0;
+		String query = "select count(*) as tot from review";
+		try {
+			pstmt = conn.prepareStatement(query);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getInt("tot");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+	
+	public ArrayList<Object> selectListPersta(Connection conn, int start, int end) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Object> list = null;
+		String query = "select * from "
+				+ "(select ROWNUM as rnum, n.* from "
+					+ "(select * from review order by review_no desc)"
+				+ " n) "
+			+ "where rnum between ? and ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				if(list == null) {
+					list = new ArrayList<Object>();
+				}
+				int reviewNo = rset.getInt("review_no");
+				String reviewWriter = rset.getString("review_writer");
+				String reviewContent = rset.getString("review_content");
+				String filename = rset.getString("filename");
+				String filepath = rset.getString("filepath");
+				int readcount = rset.getInt("readcount");
+				String hashtag = rset.getString("hashtag");
+				Date reviewDate = rset.getDate("review_Date");
+				Review r= new Review(reviewNo, reviewWriter, reviewContent, filename, filepath, readcount, hashtag, reviewDate);
+				list.add(r);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+	}
+
+	public int delPerstaAdmin(Connection conn, String reviewNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "delete from review where review_no = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, reviewNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 }

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>결제 페이지</title>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript" src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
@@ -172,7 +172,7 @@
 									배송요청사항<span class="span-right"><img src="/img/down.png" class="arrow_img"></span>
 								</div>
 								<div class="content"">
-									<textarea placeholder="배송 메시지 입력" id="ship_msg"></textarea>
+									<textarea placeholder="배송 메시지 입력" id="ship_msg" style="resize: none;"></textarea>
 								</div>
 							</li>
 							<li class="toggler">
@@ -419,6 +419,7 @@ $("#ship_addr_list").click(function(){
 		type : "get",
 		success : function(data){
 			var tbody = $("#shipAddr_list").children('tbody');
+			tbody.html("");
 			if(data.length>0){
 			tbody.html("<tr><th></th><th>받는사람</th><th>연락처</th><th>배송지</th><th>정보삭제</th></tr>");
 				for(var index in data){

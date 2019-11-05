@@ -9,12 +9,19 @@ public class RecommendData {
 	private Date recommendDate;
 	private String recommendPerfumeName;
 	private String recommendPerfumePhotopath;
+	private int recommendPerfumeVolume;
+	public int getRecommendPerfumeVolume() {
+		return recommendPerfumeVolume;
+	}
+	public void setRecommendPerfumeVolume(int recommendPerfumeVolume) {
+		this.recommendPerfumeVolume = recommendPerfumeVolume;
+	}
 	public RecommendData() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public RecommendData(int recommendNo, int recommendMemberNo, int recommendPerfumeNo, Date recommendDate,
-			String recommendPerfumeName, String recommendPerfumePhotopath) {
+			String recommendPerfumeName, String recommendPerfumePhotopath, int recommendPerfumeVolume) {
 		super();
 		this.recommendNo = recommendNo;
 		this.recommendMemberNo = recommendMemberNo;
@@ -22,6 +29,7 @@ public class RecommendData {
 		this.recommendDate = recommendDate;
 		this.recommendPerfumeName = recommendPerfumeName;
 		this.recommendPerfumePhotopath = recommendPerfumePhotopath;
+		this.recommendPerfumeVolume = recommendPerfumeVolume;
 	}
 	public int getRecommendNo() {
 		return recommendNo;

@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Twenty Second</title>
 </head>
 <link rel = "stylesheet" href="/css/choice/paper.css">
 <body>
 	<!--background-repeat: no-repeat;-->
 	<hr style = "margin-top: 1px; margin-bottom: 1px;">
 	<%@ include file = "/WEB-INF/views/common/header.jsp" %>
-	<div class = "backgroundPhoto" style = "margin:-2px;">
+	<div class = "backgroundPhoto" style = "margin:-2px; ">
 		<div class = "titleWrap">
 			<div class = "title">
 				<p class = "font42">두번째 향수 추천 서비스</p>

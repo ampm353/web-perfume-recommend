@@ -1,6 +1,7 @@
 package fp.perfumereview.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,17 +34,27 @@ public class InsertPerfumeReviewServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		int perfumeNo = Integer.parseInt(request.getParameter("perfumeNo"));
-		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		String memberNickname = request.getParameter("memberNickname");
-		String perfumeReviewTitle = request.getParameter("perfumeReviewTitle");
-		String perfumeReviewContent = request.getParameter("perfumeReviewContent");
-		PerfumeReview pfreview = new PerfumeReview(0, memberNo, memberNickname, perfumeNo, perfumeReviewTitle, perfumeReviewContent, null);
-		PerfumeReviewService service = new PerfumeReviewService();
-		int result = service.insertPerfumeReview(pfreview);
-		request.setAttribute("righttab", "righttab");
-		RequestDispatcher rd = request.getRequestDispatcher("/viewPerfume?perfumeNo="+perfumeNo);
-		rd.forward(request, response);
+	      int perfumeNo = Integer.parseInt(request.getParameter("perfumeNo"));
+	      int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+	      String memberNickname = request.getParameter("memberNickname");
+	      String perfumeReviewTitle = request.getParameter("perfumeReviewTitle");
+	      String perfumeReviewContent = request.getParameter("perfumeReviewContent");
+	      PerfumeReviewService service = new PerfumeReviewService();
+	      
+	      ArrayList<PerfumeReview> prlist = service.onePerfumeReview(perfumeNo);      
+	      request.setAttribute("prlist", prlist);
+	      request.setAttribute("righttab", "righttab");
+	      
+	      if(perfumeReviewContent.equals("")) {
+	         request.setAttribute("msg", "내용을 입력해주세요.");               
+	         RequestDispatcher rd = request.getRequestDispatcher("/viewPerfume?perfumeNo="+perfumeNo);
+	         rd.forward(request, response);
+	      } else {
+	         PerfumeReview pfreview = new PerfumeReview(0, memberNo, memberNickname, perfumeNo, perfumeReviewTitle, perfumeReviewContent, null);      
+	         int result = service.insertPerfumeReview(pfreview);
+	         RequestDispatcher rd = request.getRequestDispatcher("/viewPerfume?perfumeNo="+perfumeNo);
+	         rd.forward(request, response);
+	      }
 	}
 
 	/**

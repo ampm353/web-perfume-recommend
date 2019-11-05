@@ -46,11 +46,9 @@ public class DeletePerfumeServlet extends HttpServlet {
 				}
 				rd = request.getRequestDispatcher("/listAdmin");
 			}else {
-				request.setAttribute("msg", "신성모독이다");
-				rd = request.getRequestDispatcher("/index.jsp");
+				rd = request.getRequestDispatcher("/");
 			}
 		}else {
-			request.setAttribute("msg", "신분을 밝히세요");
 			rd = request.getRequestDispatcher("/views/member/login.jsp");
 		}
 		rd.forward(request, response);

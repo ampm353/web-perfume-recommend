@@ -46,8 +46,8 @@ public class PerfumeListFemaleServlet extends HttpServlet {
 		// 3. 비지니스 로직
 		PerfumeService service = new PerfumeService();
 		PageData pd = service.selectListFemale(reqPage);
-		ArrayList<Perfume> p = service.selectTopGender(gender);
 		// 4. view 처리
+		ArrayList<Perfume> p = service.selectTopGender(gender);
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/shop/shop_main_female.jsp");
 		request.setAttribute("pd", pd);
 		request.setAttribute("p", p);

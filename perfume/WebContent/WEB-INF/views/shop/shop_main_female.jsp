@@ -72,7 +72,8 @@
 					<div class='photo' style='border:1px solid #F2F2F2; width:303px; margin:0 auto; margin-left:15px; margin-right:15px; margin-bottom:30px; padding-top:10px; padding-bottom:10px; float:left'>
 						<a href="/viewPerfume?perfumeNo=${p.perfumeNo }"><img class="imghover" src='/upload/photo/${p.perfumePhotopath }' width='200px' height='200px'></a>
 						<p class ='caption' style="color:#585858;; margin-bottom:0px; padding-top:10px; font-weight:500;">${p.perfumeName }</p>
-						<p class ='caption' style="color:#585858;; font-size: 0.8em;">${p.perfumePrice }원</p>
+						<p style="color:#585858;; font-size: 0.5em; margin-bottom:0px;">${p.perfumeVolume }ml</p>
+						<p style="color:#585858;; font-size: 0.8em;">${p.perfumePrice }원</p>
 					</div>
 				</c:forEach>
 			</div>	
@@ -117,7 +118,8 @@
 					<div class='photo' style='border:1px solid #F2F2F2; width:303px; margin:0 auto; margin-left:15px; margin-right:15px; margin-bottom:30px; padding-top:10px; padding-bottom:10px; float:left'>
 						<a href="/viewPerfume?perfumeNo=${p.perfumeNo }"><img class="imghover" src='/upload/photo/${p.perfumePhotopath }' width='200px' height='200px'></a>
 						<p class ='caption' style="color:#585858;; margin-bottom:0px; padding-top:10px; font-weight:500;">${p.perfumeName }</p>
-						<p class ='caption' style="color:#585858;; font-size: 0.8em;">${p.perfumePrice }원</p>
+						<p style="color:#585858;; font-size: 0.5em; margin-bottom:0px;">${p.perfumeVolume }ml</p>
+						<p style="color:#585858;; font-size: 0.8em;">${p.perfumePrice }원</p>
 					</div>
 				</c:forEach>
 			</div>						

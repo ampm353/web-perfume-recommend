@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<title>login</title>
+<title>로그인</title>
 <style>
 	.btn1 {
 	    width:500px;
@@ -75,6 +75,12 @@
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
+	<script>
+		$(function(){
+			var newWin = window.open("https://accounts.kakao.com/logout?continue=https://accounts.kakao.com/weblogin/account", "카카오 로그아웃","width=1,height=1,toolbar=no,menubar=no,scrollbars=no,resizable=no");
+			newWin.close();							
+		});
+	</script>
 	<section>
 		<div class="table-wrapper" style="margin:0 auto; width:500px; height:600px; text-align: center; margin-top: 200px;">
 			<a name="login" class="log" id="kakao-login-btn1"></a><br>
@@ -106,7 +112,7 @@
 <script type='text/javascript'>
 	  //<![CDATA[
 	    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-	    Kakao.init('5f850cbd25ea5b2cefa90267ff468b6d');
+	    Kakao.init('52b873587dbf1ed4d7e2c4dfaaf39adc');
 	    // 카카오 로그인 버튼을 생성합니다.
 	    Kakao.Auth.createLoginButton({
 	      container: '#kakao-login-btn1',

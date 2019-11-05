@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Admin Page</title>
 <style>
 	.additionalBtn{
 		border: 1px solid rgb(169, 169, 169); height: 30px; display: inline-block; padding-left: 5px; padding-right: 5px; color: black; float: right;

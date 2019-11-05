@@ -25,13 +25,6 @@
 	font-size: 20px;
 }
 
-.imgDiv {
-	height: 400px;
-	background-image: url("/headerimg/CS_top_1.jpg");
-	background-size: cover;
-	transition: opacity 0.3s;
-	margin-bottom: 20px;
-}
 /* .wrapper>.1_1_con, .wrapper>.notice_con{
 		display:none;
 	} */
@@ -165,12 +158,12 @@
 	border-radius: 10px;
 }
 </style>
-<title>Insert title here</title>
+<title>1:1 Question</title>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp"%>
 	<section style="margin-top:80px;">
-	<div class="imgDiv"></div>
+	<div class="imgDivCs" style="margin-top:-40px;"><img src="/headerimg/tempppp.png" style="width:122%; height:90%;"></div>
 	<div class="wrapper"
 		style="margin: 0 auto; width: 50%; /* border:1px solid gray;  */ min-width: 600px;">
 		<div class="tap" style="height: 60px;">
@@ -183,7 +176,7 @@
 			<div style="height:98px;">
 				<div class="notice_intro">
 					<p style="margin-top: 10px;">
-						두번째 스무살은 고객의 소리를 듣습니다.<br>- 궁금한 사항을 남겨주시면, 신속하게 답변을 드리도록
+						TwentySecond는 고객의 소리를 듣습니다.<br>- 궁금한 사항을 남겨주시면, 신속하게 답변을 드리도록
 						하겠습니다.
 					</p>
 				</div>

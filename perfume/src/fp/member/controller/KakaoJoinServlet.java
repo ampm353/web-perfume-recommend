@@ -41,14 +41,15 @@ public class KakaoJoinServlet extends HttpServlet {
 		Member m = new Member(0,memberId, memberNickName, memberPw, memberGender, memberBirth, memberPhone, null,null,null,null);
 		MemberService service = new MemberService();
 		int result = service.insertMember(m);
+		RequestDispatcher rd = null;
 		if(result>0) {
 			request.setAttribute("msg", "회원가입 성공");
-			request.setAttribute("loc", "/views/member/login.jsp");
+			rd = request.getRequestDispatcher("/views/member/login.jsp");
+
 		}else {
 			request.setAttribute("msg", "회원가입 실패");
-			request.setAttribute("loc", "/views/member/kakaoJoin.jsp");
+			rd = request.getRequestDispatcher("/WEB-INF/views/member/kakaoJoin.jsp");
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/common/msg.jsp");
 		rd.forward(request, response);
 	}
 

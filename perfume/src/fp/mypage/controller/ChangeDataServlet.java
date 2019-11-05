@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import fp.member.model.service.MemberService;
 import fp.member.model.vo.Member;
 import fp.perfumereview.model.service.PerfumeReviewService;
-import fp.perfumereview.model.vo.PerfumeReviewAndPhotoAndName;
 
 /**
  * Servlet implementation class ChangeDataServlet

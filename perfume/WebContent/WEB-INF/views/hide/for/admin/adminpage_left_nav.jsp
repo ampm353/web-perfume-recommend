@@ -227,6 +227,12 @@ section{
 					<hr class="hr-bold">
 				</a>
 			</li>
+			<li>
+				<a href="/perstaAdmin">
+					<h5>Perstagram 관리</h5>
+					<hr class="hr-bold">
+				</a>
+			</li>
 		</ul>
 	</div>
 	<script>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Admin Page</title>
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/common/header.jsp" %>
@@ -60,10 +60,10 @@
 							</c:choose>
 							<c:choose>
 								<c:when test='${list.memberValid.equals("true")}'>
-								<td><button type="button" class="deactivateMemb">비활성</button></td>
+								<td><button type="button" class="deactivateMemb">활성화</button></td>
 								</c:when>
 								<c:when test='${list.memberValid.equals("false")}'>
-								<td><button type="button" class="activateMemb">활성화</button></td>
+								<td><button type="button" class="activateMemb">비활성</button></td>
 								</c:when>
 							</c:choose>
 						</tr>

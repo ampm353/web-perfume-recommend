@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Twenty Second</title>
 </head>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/choice/step.css">
 <body>
 <%@ include file = "/WEB-INF/views/common/header.jsp" %>
-<section>
+<section style="margin-top: 60px;">
 <div class = "div">
 <form action = "/knowStep" method = "post">
 <div id = "step1">
@@ -24,7 +24,7 @@
 	<label>step4</label>
 </div>
 <div class = "div">
-	<h4>Top notes를 선택하세요.</h4>
+	<h4 style="font-weight:500; padding-bottom:10px; border-bottom:2px solid black;">Top notes<span style="font-weight:300;"> 를 선택하세요.</span></h4>
 		<div>
 			<label class = "label" for = "q1_1">
 				<span><img src="/choiceimg/note/Bergamot.jpg" class = "img"></span>
@@ -99,7 +99,7 @@
 		</div>
 	</div>
 	<div class = "wrap">
-		<input type = "button" class = "buttons" value = "BACK" onclick="location.href = '/paper/choice.jsp'"><input type = "button" value = "NEXT" class = "buttons black" onclick="goPage(2, this)" />
+		<input type = "button" class = "buttons" value = "BACK" onclick="location.href = '/goChoice'"><input type = "button" value = "NEXT" class = "buttons black" onclick="goPage(2, this)" />
 	</div>
 </div>
 <div id = "step2">
@@ -113,7 +113,7 @@
 		<label>step4</label>
 	</div>
 	<div class = "div">
-		<h4>Middle notes를 선택하세요.</h4>
+		<h4 style="font-weight:500; padding-bottom:10px; border-bottom:2px solid black;">Middle notes<span style="font-weight:300;"> 를 선택하세요.</span></h4>
 		<div>
 		<label class = "label" for = "q2_1">
 			<span><img src="/choiceimg/note/Orange.jpg" class = "img"></span>
@@ -207,7 +207,7 @@
 		<label>step4</label>
 	</div>
 	<div class = "div">
-		<h4>Base notes를 선택하세요.</h4>
+		<h4 style="font-weight:500; padding-bottom:10px; border-bottom:2px solid black;">Base notes<span style="font-weight:300;"> 를 선택하세요.</span></h4>
 		<div>
 		<label class = "label" for = "q3_1">
 			<span><img src="/choiceimg/note/amber.webp" class = "img"></span>
@@ -222,27 +222,17 @@
 		<label class = "label" for = "q3_3">
 			<span><img src="/choiceimg/note/wood.jpg" class = "img"></span>
 			<span><p>우드<br>Wood</p></span>
-			<span><input type = "checkbox" id = "q3_3" name = "q3" value = ",우디" /></span>
+			<span><input type = "checkbox" id = "q3_3" name = "q3" value = "우드" /></span>
 		</label>
 		<label class = "label" for = "q3_4">
 			<span><img src="/choiceimg/note/Musk.jpg" class = "img"></span>
 			<span><p>머스크<br>Musk</p></span>
 			<span><input type = "checkbox" id = "q3_4" name = "q3" value = "머스크" /></span>
 		</label>
-		<label class = "label" for = "q3_5">
-			<span><img src="/choiceimg/note/Cedarwood.jpg" class = "img"></span>
-			<span><p>시더우드<br>Cedarwood</p></span>
-			<span><input type = "checkbox" id = "q3_5" name = "q3" value = "시더우디" /></span>
-		</label>
 		<label class = "label" for = "q3_6">
 			<span><img src="/choiceimg/note/Patchouli.webp" class = "img"></span>
 			<span><p>페츌리<br>Patchouli</p></span>
 			<span><input type = "checkbox" id = "q3_6" name = "q3" value = "페츌리" /></span>
-		</label>
-		<label class = "label" for = "q3_7">
-			<span><img src="/choiceimg/note/Sandalwood.jpg" class = "img"></span>
-			<span><p>샌달우드<br>Sandalwood</p></span>
-			<span><input type = "checkbox" id = "q3_7" name = "q3" value = "샌달우디" /></span>
 		</label>
 		<label class = "label" for = "q3_8">
 			<span><img src="/choiceimg/note/Tonka-bean.jpg" class = "img"></span>
@@ -304,16 +294,16 @@
 	</div>
 	 -->
 	<div class = "div2">
-		<h4>브랜드를 선택하세요</h4>
+		<h4 style="font-weight:500; padding-bottom:10px; border-bottom:2px solid black; font-size:1.5em;">브랜드를 선택하세요.</h4>
 		<div style="position:relative;">
-		<input type = "text" autocomplete="off" id = "view" name = "brand" class = "text" style ="color: black;width: 200px; height:30px; border: 1px solid black; border-bottom-color: #aaa; border-left-color: #777; border-right-color: #ccc; box-sizing: border-box; padding:1px 6px;" />
+		<input type = "text" autocomplete="off" id = "view" name = "brand" class = "text" style ="color: black;width: 200px; height:30px; border: 1px solid black; border-bottom-color: #aaa; border-left-color: #777; border-right-color: #ccc; box-sizing: border-box; padding:1px 6px; margin-top: 0px; margin-bottom: 0px;" />
 		<input type = "button" id = "cancel" class = "cancel" value = "상관없음" />
-		<div id = "output" style = "position:absolute; top:40px; left:10px; border:1px solid #aaa; width:200px; background-color: white; overflow: hidden; display:none;"></div>
+		<div id = "output" style = "position:absolute; top:30px; left:10px; border:1px solid #aaa; width:200px; background-color: white; overflow: hidden; display:none;"></div>
 		</div>
 		
 	</div>
 	<div class = "div2">
-		<h4>가격을 최대 어디까지 알아보고 계신가요?</h4>
+		<h4 style="font-weight:500; padding-bottom:10px; border-bottom:2px solid black; font-size:1.5em; margin-top: 40px;">가격을 최대 어디까지 알아보고 계신가요?</h4>
 		<div>
 		<label class = "span" style = "padding-left: 10px;"><input type = "radio" name = "q5" value = "30000">3만원</label>
 		<label class = "span" style = "padding-left: 10px;"><input type = "radio" name = "q5" value = "50000">5만원</label>
@@ -322,9 +312,9 @@
 		</div>
 	</div>
 	<div class = "div2">
-		<h4>대중적인 향수를 찾으시나요?</h4>
+		<h4 style="font-weight:500; padding-bottom:10px; border-bottom:2px solid black; font-size:1.5em; margin-top: 40px;">대중적인 향수를 추천받고 싶으신가요?</h4>
 		<div>
-		<h6 style="margin: 0px;margin-bottom: 5px;margin-top: -15px;">저희 사이트를 기준으로 추천수가 많거나 구매수가 많은 향수를 추천해드립니다.</h6>
+		<h6 style="margin: 0px;margin-bottom: 15px; margin-left: 10px; margin-top: -15px; font-weight:100;">저희 사이트를 기준으로 추천수가 많거나 구매수가 많은 향수를 추천해드립니다.</h6>
 		<label class = "span2"  style = "padding-left: 10px;"><input type = "radio" name = "q6" value = "true">네</label>
 		<label class = "span2" style = "padding-left: 10px;"><input type = "radio" name = "q6" value = "false">아니오</label>
 		</div>
@@ -558,7 +548,7 @@
 		$("#step"+go).css("display", "");
 	}
 	$('form').submit(function(e) {
-		if($("input[type=radio]:checked").length < 2){
+		if($("input[type='radio']:checked").length < 2){
 			alert("비어있는 값이 있습니다.");
 			e.preventDefault();
 		    e.stopPropagation();
